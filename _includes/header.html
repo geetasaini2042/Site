@@ -18,6 +18,18 @@
   font-size: 18px;
   margin: 0;
 }
+.topbar .icons {
+  display: flex;
+  gap: 15px;
+}
+.topbar button, .topbar a {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 /* Drawer Overlay */
 .drawer-overlay {
@@ -32,8 +44,8 @@
 /* Drawer Panel */
 .drawer {
   position: fixed;
-  top: 0; left: -250px;
-  width: 250px;
+  top: 0; left: -260px;
+  width: 260px;
   height: 100%;
   background: #fff;
   box-shadow: 2px 0 5px rgba(0,0,0,0.3);
@@ -43,6 +55,9 @@
 }
 .drawer.open {
   left: 0;
+}
+.drawer h3 {
+  margin-top: 0;
 }
 .drawer a {
   display: block;
@@ -58,10 +73,12 @@
 
 <!-- Top Navigation Bar -->
 <div class="topbar">
-  <button onclick="openDrawer()" style="background:none; border:none; color:white; font-size:20px; cursor:pointer;">
-    ☰
-  </button>
-  <h1>मेरी वेबसाइट</h1>
+  <button onclick="openDrawer()">☰</button>
+  <h1>{{ site.title }}</h1>
+  <div class="icons">
+    <button onclick="alert('🔍 Search Feature Coming Soon!')">🔍</button>
+    <a href="/profile">👤</a>
+  </div>
 </div>
 
 <!-- Drawer Overlay -->
@@ -69,24 +86,25 @@
 
 <!-- Drawer Menu -->
 <div class="drawer" id="drawer">
-  <h3>Menu</h3>
-  <a href="/">होम</a>
-  <a href="/admission">Admission</a>
-  <a href="/syllabus">Syllabus</a>
-  <a href="/result">Result</a>
-  <a href="/study-materials">Study Materials</a>
-  <a href="/notifications">Notifications</a>
+  <h3>📂 मेनू</h3>
+  <a href="/">🏠 होम</a>
+  <a href="/admission">📄 Admission</a>
+  <a href="/syllabus">📚 Syllabus</a>
+  <a href="/result">📊 Result</a>
+  <a href="/study-materials">📂 Study Materials</a>
+  <a href="/notifications">🔔 Notifications</a>
+  <hr>
+  <a href="/about">ℹ️ हमारे बारे में</a>
+  <a href="/contact">📞 संपर्क करें</a>
 </div>
 
 <script>
 function openDrawer() {
   document.getElementById('drawer').classList.add('open');
-  document.getElementById('drawerOverlay').classList.add('show');
-  document.querySelector('.drawer-overlay').style.display = 'block';
+  document.getElementById('drawerOverlay').style.display = 'block';
 }
 function closeDrawer() {
   document.getElementById('drawer').classList.remove('open');
-  document.getElementById('drawerOverlay').classList.remove('show');
-  document.querySelector('.drawer-overlay').style.display = 'none';
+  document.getElementById('drawerOverlay').style.display = 'none';
 }
 </script>
