@@ -1,0 +1,92 @@
+<style>
+/* Top Bar */
+.topbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 50px;
+  background: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1100;
+}
+.topbar h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Drawer Overlay */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+/* Drawer Panel */
+.drawer {
+  position: fixed;
+  top: 0; left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+.drawer.open {
+  left: 0;
+}
+.drawer a {
+  display: block;
+  padding: 10px 0;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+.drawer a:hover {
+  background: #f0f0f0;
+}
+</style>
+
+<!-- Top Navigation Bar -->
+<div class="topbar">
+  <button onclick="openDrawer()" style="background:none; border:none; color:white; font-size:20px; cursor:pointer;">
+    ☰
+  </button>
+  <h1>मेरी वेबसाइट</h1>
+</div>
+
+<!-- Drawer Overlay -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Drawer Menu -->
+<div class="drawer" id="drawer">
+  <h3>Menu</h3>
+  <a href="/">होम</a>
+  <a href="/admission">Admission</a>
+  <a href="/syllabus">Syllabus</a>
+  <a href="/result">Result</a>
+  <a href="/study-materials">Study Materials</a>
+  <a href="/notifications">Notifications</a>
+</div>
+
+<script>
+function openDrawer() {
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('show');
+  document.querySelector('.drawer-overlay').style.display = 'block';
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('show');
+  document.querySelector('.drawer-overlay').style.display = 'none';
+}
+</script>
