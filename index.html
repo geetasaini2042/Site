@@ -3,21 +3,17 @@ layout: default
 title: "होम"
 ---
 
-{% include header.html %}
-
 <div style="padding:20px;">
   <h1>स्वागत है!</h1>
-  <p>यह मेरी Jekyll वेबसाइट का होमपेज है।</p>
+  <p>यह मेरी Jekyll वेबसाइट का होमपेज है, जिसमें ऊपर fixed header, drawer menu और नीचे footer है।</p>
 
   <h2>नवीनतम पोस्ट</h2>
   <ul>
     {% for post in site.posts %}
       <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         <small>({{ post.date | date: "%d-%m-%Y" }})</small>
       </li>
     {% endfor %}
   </ul>
 </div>
-
-{% include footer.html %}
