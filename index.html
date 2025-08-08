@@ -1,19 +1,155 @@
----
-layout: default
-title: "होम"
----
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>होम | मेरी वेबसाइट</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding-top: 50px;
+    }
 
-<div style="padding:20px;">
-  <h1>स्वागत है!</h1>
-  <p>यह मेरी Jekyll वेबसाइट का होमपेज है, जिसमें ऊपर fixed header, drawer menu और नीचे footer है।</p>
+    /* Top Bar */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 50px;
+      background: #333;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      z-index: 1100;
+    }
+    .topbar h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+    .topbar .icons {
+      display: flex;
+      gap: 15px;
+    }
+    .topbar button, .topbar a {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      text-decoration: none;
+    }
 
-  <h2>नवीनतम पोस्ट</h2>
-  <ul>
-    {% for post in site.posts %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <small>({{ post.date | date: "%d-%m-%Y" }})</small>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+    /* Drawer Overlay */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+
+    /* Drawer Panel */
+    .drawer {
+      position: fixed;
+      top: 0; left: -260px;
+      width: 260px;
+      height: 100%;
+      background: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .drawer.open {
+      left: 0;
+    }
+    .drawer h3 {
+      margin-top: 0;
+    }
+    .drawer a {
+      display: block;
+      padding: 10px 0;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+    .drawer a:hover {
+      background: #f0f0f0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ddd;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="topbar">
+    <button onclick="openDrawer()">☰</button>
+    <h1>मेरी वेबसाइट</h1>
+    <div class="icons">
+      <button onclick="alert('🔍 Search Feature Coming Soon!')">🔍</button>
+      <a href="#">👤</a>
+    </div>
+  </div>
+
+  <!-- Drawer Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+  <!-- Drawer Menu -->
+  <div class="drawer" id="drawer">
+    <h3>📂 मेनू</h3>
+    <a href="#">🏠 होम</a>
+    <a href="#">📄 Admission</a>
+    <a href="#">📚 Syllabus</a>
+    <a href="#">📊 Result</a>
+    <a href="#">📂 Study Materials</a>
+    <a href="#">🔔 Notifications</a>
+    <hr>
+    <a href="#">ℹ️ हमारे बारे में</a>
+    <a href="#">📞 संपर्क करें</a>
+  </div>
+
+  <!-- Main Content -->
+  <main style="padding:20px;">
+    <h1>स्वागत है!</h1>
+    <p>यह मेरी वेबसाइट का होमपेज है, जिसमें ऊपर fixed header, drawer menu और नीचे footer है।</p>
+
+    <h2>नवीनतम पोस्ट</h2>
+    <ul>
+      <li><a href="#">मेरा पहला पोस्ट</a> <small>(08-08-2025)</small></li>
+      <li><a href="#">दूसरा पोस्ट</a> <small>(07-08-2025)</small></li>
+      <li><a href="#">तीसरा पोस्ट</a> <small>(06-08-2025)</small></li>
+    </ul>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Mr. SINGODIYA
+  </footer>
+
+  <script>
+    function openDrawer() {
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('drawerOverlay').style.display = 'block';
+    }
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('drawerOverlay').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
