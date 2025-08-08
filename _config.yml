@@ -1,0 +1,36 @@
+# साइट की बेसिक जानकारी
+title: "मेरी वेबसाइट"
+description: "यह एक Jekyll साइट है जो GitHub Pages पर होस्ट की गई है।"
+url: "https://example.github.io"   # अपनी साइट का URL डालें
+baseurl: ""                         # अगर repo name से चल रही है तो /repo-name
+
+# थीम सेटिंग
+theme: minima   # GitHub Pages के लिए default theme (या अपनी custom theme का नाम)
+
+# लेखक की जानकारी
+author:
+  name: "Mr. SINGODIYA"
+  email: "you@example.com"
+
+# Markdown और कोड हाईलाइटिंग
+markdown: kramdown
+highlighter: rouge
+
+# Timezone
+timezone: Asia/Kolkata
+
+# Permalinks (URL structure)
+permalink: /:categories/:title/
+
+# Plugins (GitHub Pages के compatible)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude files from build
+exclude:
+  - README.md
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
